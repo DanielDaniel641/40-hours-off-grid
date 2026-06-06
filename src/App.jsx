@@ -1,49 +1,35 @@
-import { useEffect, useState } from 'react'
-import './index.css'
+import { useEffect, useState } from "react";
+import "./index.css";
 
-export default function FamineChallengeWebsite() {
+export default function App() {
   const fundraisingGoal = 1000;
-  const [currentDonations, setCurrentDonations] = useState(0);
-  const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSz03acHFQ9EtT55CKLas8fCDveVHnAJYpAvydUQLiKn6rmXZcZ13pWJDvoQmlGtWQ0m8TLkppJU-VJ/pub?output=csv';
+  const [currentDonations, setCurrentDonations] = useState(248);
 
-  useEffect(() => {
-    fetch(sheetUrl)
-      .then((response) => response.text())
-      .then((csvText) => {
-        const rows = csvText.trim().split(String.fromCharCode(10)).map((row) => row.split(','));
-        const donationsRow = rows.find((row) =>
-          row[0]?.toLowerCase().replaceAll(' ', '') === 'currentdonations'
-        );
-
-        if (donationsRow && donationsRow[1]) {
-          const amount = Number(donationsRow[1].replaceAll('$', '').replaceAll(',', '').trim());
-          if (!Number.isNaN(amount)) {
-            setCurrentDonations(amount);
-          }
-        }
-      })
-      .catch((error) => {
-        console.log('Could not load donation amount:', error);
-      });
-  }, []);
-  const percentRaised = Math.min((currentDonations / fundraisingGoal) * 100, 100);
+  const percentRaised = Math.min(
+    (currentDonations / fundraisingGoal) * 100,
+    100
+  );
 
   return (
     <div className="site">
       <section className="hero">
-        <div className="hero-glow"></div>
-
         <div className="hero-content">
           <div className="hero-text">
             <p className="eyebrow">Whangārei Boys' High School</p>
+
             <h1>
               40
               <span>HOURS</span>
               <span>OFF GRID</span>
             </h1>
+
+            <div className="title-line"></div>
+
+            <h3>40 hours. One challenge. A bigger purpose.</h3>
+
             <p className="hero-description">
               Daniel Pollard and Dylan Mansell are taking on a 40-hour bush
-              camping challenge in a Waipū forest to raise money and awareness
+              camping challenge at Nihotetea Stream to raise money and awareness
               for communities in the Solomon Islands through the 40 Hour
               Challenge.
             </p>
@@ -51,12 +37,13 @@ export default function FamineChallengeWebsite() {
             <div className="hero-buttons">
               <a
                 className="button primary"
-                href="https://fundraise.worldvision.org.nz/fundraisers/danielp15/"
+                href="https://fundraise.worldvision.org.nz/fundraisers/danielp131/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Donate Now
               </a>
+
               <a className="button secondary" href="#info">
                 Learn More
               </a>
@@ -83,10 +70,17 @@ export default function FamineChallengeWebsite() {
             </div>
 
             <div className="stat-card">
-              <p>Time</p>
+              <p>Date</p>
               <h3>Friday, 19th June</h3>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section notice-section">
+        <div className="notice-card">
+          <span>
+          </span>
         </div>
       </section>
 
@@ -100,21 +94,27 @@ export default function FamineChallengeWebsite() {
           <div className="card">
             <h3>The Challenge</h3>
             <p>
-              For 40 hours, we will be camping in the bush with minimal gear. The challenge is designed to push us outside our comfort zone while raising money for people facing much harder challenges every day.
+              For 40 hours, we will be camping in the bush with minimal gear.
+              The challenge is designed to push us outside our comfort zone
+              while raising money for people facing much harder challenges every
+              day.
             </p>
           </div>
 
           <div className="card">
             <h3>Why We’re Doing It</h3>
             <p>
-              We want this challenge to be more than just camping. By filming the
-              experience and sharing the fundraiser, we hope to raise awareness
-              and encourage more people to support the 40 Hour Challenge.
+              We want this challenge to be more than just camping. By filming
+              the experience and sharing the fundraiser, we hope to raise
+              awareness and encourage more people to support the 40 Hour
+              Challenge.
             </p>
           </div>
         </div>
+      </section>
 
-        <div className="section-heading sub-heading">
+      <section className="section darker">
+        <div className="section-heading">
           <p className="eyebrow">Where donations go</p>
           <h2>Supporting Families In Solomon Islands</h2>
         </div>
@@ -122,7 +122,7 @@ export default function FamineChallengeWebsite() {
         <div className="card-grid two">
           <div className="card">
             <h3>What Donations Help With</h3>
-            <ul className="info-list">
+            <ul>
               <li>Food and nutrition support for families</li>
               <li>Seeds, farming tools, and support for growing food</li>
               <li>Clean water and community support</li>
@@ -132,76 +132,64 @@ export default function FamineChallengeWebsite() {
           </div>
 
           <div className="card">
-            <h3>Learn More</h3>
+            <h3>Our Goal</h3>
             <p>
-              World Vision NZ supports communities through projects that help
-              families build safer, healthier, and more secure futures.
+              Our goal is to raise $1,000 for the 40 Hour Challenge. Every
+              donation, no matter the amount, helps us get closer to that goal.
             </p>
-            <a
-              className="button secondary"
-              href="https://www.worldvision.org.nz/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit World Vision NZ
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="section darker">
-        <div className="section-heading">
-          <p className="eyebrow">The crew</p>
-          <h2>Meet The Team</h2>
-        </div>
-
-        <div className="card-grid three">
-          <div className="card team-card">
-            <h3>Daniel Pollard</h3>
-            <p className="role">Age 14</p>
-            <p>Co-leading the challenge, helping with filming, planning, and promoting the fundraiser.</p>
-          </div>
-
-          <div className="card team-card">
-            <h3>Dylan Mansell</h3>
-            <p className="role">Age 14</p>
-            <p>Taking on the 40-hour challenge and helping document the full experience.</p>
-          </div>
-
-          <div className="card team-card">
-            <h3>Sam Hoddle</h3>
-            <p className="role">Support Crew</p>
-            <p>Helping with daily check-ins, GoPro batteries, and safety support.</p>
           </div>
         </div>
       </section>
 
       <section className="section">
         <div className="section-heading">
-          <p className="eyebrow">Documenting the challenge</p>
-          <h2>Drone Shots, Route Map & Vlogs</h2>
+          <p className="eyebrow">The crew</p>
+          <h2>Meet The Team</h2>
         </div>
 
-        <div className="media-grid">
-          <div className="media-card">
-            <span>01</span>
-            <h3>Drone Shots</h3>
-            <p>Aerial shots of the area will be added once filming is ready.</p>
+        <div className="card-grid three">
+          <div className="card">
+            <h3>Daniel Pollard</h3>
+            <p className="role">Age 14</p>
+            <p>
+              Co-leading the challenge, helping with filming, planning, and
+              promoting the fundraiser.
+            </p>
           </div>
 
-          <div className="media-card">
-            <span>02</span>
-            <h3>Route Map</h3>
-            <p>A marked map will be added once the area and safety plan are finalised.</p>
+          <div className="card">
+            <h3>Dylan Mansell</h3>
+            <p className="role">Age 14</p>
+            <p>
+              Taking on the 40-hour challenge and helping document the full
+              experience.
+            </p>
           </div>
 
-          <div className="media-card">
-            <span>03</span>
-            <h3>Final Vlog</h3>
-            <p>The edited video will be released after the challenge is completed.</p>
+          <div className="card">
+            <h3>Sam Hoddle</h3>
+            <p className="role">Support Crew</p>
+            <p>
+              Helping with daily check-ins, GoPro batteries, and safety support.
+            </p>
           </div>
         </div>
       </section>
+
+     <section className="section darker">
+  <div className="section-heading">
+    <p className="eyebrow">Location</p>
+    <h2>Nihotetea Stream</h2>
+  </div>
+
+  <div className="gallery-grid">
+    <img src="/40-hours-off-grid/images/drone1.png" alt="Drone shot 1" />
+    <img src="/40-hours-off-grid/images/drone2.png" alt="Drone shot 2" />
+    <img src="/40-hours-off-grid/images/drone3.png" alt="Drone shot 3" />
+    <img src="/40-hours-off-grid/images/drone4.png" alt="Drone shot 4" />
+  </div>
+</section>
+
 
       <section className="section darker">
         <div className="section-heading">
@@ -212,7 +200,7 @@ export default function FamineChallengeWebsite() {
         <div className="card-grid three">
           <div className="card">
             <h3>Shelter & Sleep</h3>
-            <ul className="info-list">
+            <ul>
               <li>Tent, tarp, or hammock</li>
               <li>Sleeping bag and sleeping mat</li>
               <li>Pegs, ropes, and ground sheet</li>
@@ -222,7 +210,7 @@ export default function FamineChallengeWebsite() {
 
           <div className="card">
             <h3>Safety & Water</h3>
-            <ul className="info-list">
+            <ul>
               <li>Water bottles or water container</li>
               <li>First aid kit</li>
               <li>Headlamp or torch</li>
@@ -233,10 +221,10 @@ export default function FamineChallengeWebsite() {
 
           <div className="card">
             <h3>Filming Gear</h3>
-            <ul className="info-list">
+            <ul>
               <li>GoPros and charged batteries</li>
               <li>SD cards and charging plan</li>
-              <li>Drone and drone batteries</li>
+              <li>Drone footage</li>
               <li>Tripod or selfie stick</li>
             </ul>
           </div>
@@ -247,6 +235,7 @@ export default function FamineChallengeWebsite() {
         <div className="donate-box">
           <p className="eyebrow">Support the fundraiser</p>
           <h2>Help Us Reach Our $1,000 Goal</h2>
+
           <p>
             Every donation helps support communities in the Solomon Islands
             through the 40 Hour Challenge. Even a small donation helps us get
@@ -258,6 +247,7 @@ export default function FamineChallengeWebsite() {
               <strong>${currentDonations}</strong>
               <span>raised so far</span>
             </div>
+
             <div>
               <strong>${fundraisingGoal}</strong>
               <span>goal</span>
@@ -266,7 +256,7 @@ export default function FamineChallengeWebsite() {
 
           <a
             className="button primary big"
-            href="https://fundraise.worldvision.org.nz/fundraisers/danielp15/"
+            href="https://fundraise.worldvision.org.nz/fundraisers/danielp131/"
             target="_blank"
             rel="noopener noreferrer"
           >
