@@ -310,6 +310,12 @@ footer {
     font-size: 78px;
   }
 
+  .sub-heading {
+    text-align: center;
+    margin-top: 90px;
+    margin-bottom: 30px;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
@@ -327,4 +333,7 @@ footer {
   .donate-box {
     padding: 40px 24px;
   }
+}
+.sub-heading {
+  margin-top: 110px;
 }

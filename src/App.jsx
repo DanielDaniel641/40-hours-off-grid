@@ -1,8 +1,31 @@
+import { useEffect, useState } from 'react'
 import './index.css'
 
 export default function FamineChallengeWebsite() {
   const fundraisingGoal = 1000;
-  const currentDonations = 0;
+  const [currentDonations, setCurrentDonations] = useState(0);
+  const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSz03acHFQ9EtT55CKLas8fCDveVHnAJYpAvydUQLiKn6rmXZcZ13pWJDvoQmlGtWQ0m8TLkppJU-VJ/pub?output=csv';
+
+  useEffect(() => {
+    fetch(sheetUrl)
+      .then((response) => response.text())
+      .then((csvText) => {
+        const rows = csvText.trim().split(String.fromCharCode(10)).map((row) => row.split(','));
+        const donationsRow = rows.find((row) =>
+          row[0]?.toLowerCase().replaceAll(' ', '') === 'currentdonations'
+        );
+
+        if (donationsRow && donationsRow[1]) {
+          const amount = Number(donationsRow[1].replaceAll('$', '').replaceAll(',', '').trim());
+          if (!Number.isNaN(amount)) {
+            setCurrentDonations(amount);
+          }
+        }
+      })
+      .catch((error) => {
+        console.log('Could not load donation amount:', error);
+      });
+  }, []);
   const percentRaised = Math.min((currentDonations / fundraisingGoal) * 100, 100);
 
   return (
@@ -25,18 +48,10 @@ export default function FamineChallengeWebsite() {
               Challenge.
             </p>
 
-            <div className="notice-card mobile-only-note">
-              <strong>Website in progress</strong>
-              <span>
-                We are still finalising gear, materials, maps, and filming plans.
-                More information will be added soon.
-              </span>
-            </div>
-
             <div className="hero-buttons">
               <a
                 className="button primary"
-                href="https://fundraise.worldvision.org.nz/fundraisers/danielp131/"
+                href="https://fundraise.worldvision.org.nz/fundraisers/danielp15/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -64,23 +79,14 @@ export default function FamineChallengeWebsite() {
 
             <div className="stat-card">
               <p>Location</p>
-              <h3>Waipū Forest</h3>
+              <h3>TBC</h3>
             </div>
 
             <div className="stat-card">
-              <p>Status</p>
-              <h3>Planning Stage</h3>
+              <p>Time</p>
+              <h3>Friday, 5th June</h3>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="section compact-section">
-        <div className="notice-card full-width-note">
-          <strong>This website is still being finalised:</strong>
-          <span>
-            We are currently finalising our materials list, equipment, route map, drone footage plans, GoPro setup, and safety plan. This website will be updated as the challenge gets closer.
-          </span>
         </div>
       </section>
 
@@ -260,7 +266,7 @@ export default function FamineChallengeWebsite() {
 
           <a
             className="button primary big"
-            href="https://fundraise.worldvision.org.nz/fundraisers/danielp131/"
+            href="https://fundraise.worldvision.org.nz/fundraisers/danielp15/"
             target="_blank"
             rel="noopener noreferrer"
           >

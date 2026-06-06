@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff8ec;
+  color: #2b2b2b;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 18px 8%;
+  background: white;
+  box-shadow: 0 4px 20px #00000012;
+}
+
+nav h2 {
+  margin-right: auto;
+  color: #ff4fa3;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hero {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+  background: linear-gradient(135deg, #ff4fa3, #ffcf4d);
+  color: white;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 82px);
+  max-width: 850px;
+  margin: 10px 0;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 650px;
+}
+
+.tag {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  background: #2b2b2b;
+  color: white;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.secondary {
+  background: white;
+  color: #2b2b2b;
+}
+
+.intro,
+.section,
+.contact {
+  padding: 70px 8%;
+  text-align: center;
+}
+
+.intro h2,
+.section h2,
+.contact h2 {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.intro p,
+.contact p {
+  max-width: 650px;
+  margin: 10px auto;
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+  margin-top: 35px;
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 24px;
+  box-shadow: 0 8px 25px #00000012;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.card strong {
+  display: block;
+  font-size: 22px;
+  color: #ff4fa3;
+  margin: 15px 0;
+}
+
+.card a {
+  color: #2b2b2b;
+  font-weight: bold;
+}
+
+.emoji {
+  font-size: 48px;
+}
+
+.yellow {
+  background: #ffe28a;
+}
+
+.faq {
+  max-width: 800px;
+  margin: 30px auto 0;
+  text-align: left;
+}
+
+details {
+  background: white;
+  margin-bottom: 14px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px #00000010;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.contact {
+  background: #ff4fa3;
+  color: white;
+}
+
+.contact .btn {
+  margin-top: 20px;
+  background: white;
+  color: #ff4fa3;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #2b2b2b;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  nav {
+    flex-wrap: wrap;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+}
