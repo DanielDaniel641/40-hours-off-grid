@@ -79,12 +79,12 @@ export default function FamineChallengeWebsite() {
 
             <div className="stat-card">
               <p>Location</p>
-              <h3>TBC</h3>
+              <h3>Nihotetea Stream</h3>
             </div>
 
             <div className="stat-card">
               <p>Time</p>
-              <h3>Friday, 5th June</h3>
+              <h3>Friday, 19th June</h3>
             </div>
           </div>
         </div>
