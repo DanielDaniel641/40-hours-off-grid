@@ -37,7 +37,7 @@ export default function App() {
             <div className="hero-buttons">
               <a
                 className="button primary"
-                href="https://fundraise.worldvision.org.nz/fundraisers/danielp131/"
+                href="https://fundraise.worldvision.org.nz/fundraisers/danielp15/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -256,7 +256,7 @@ export default function App() {
 
           <a
             className="button primary big"
-            href="https://fundraise.worldvision.org.nz/fundraisers/danielp131/"
+            href="https://fundraise.worldvision.org.nz/fundraisers/danielp15/"
             target="_blank"
             rel="noopener noreferrer"
           >
