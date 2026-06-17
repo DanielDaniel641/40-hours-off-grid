@@ -3,12 +3,32 @@ import "./index.css";
 
 export default function App() {
   const fundraisingGoal = 1000;
-  const [currentDonations, setCurrentDonations] = useState(248);
+const [currentDonations, setCurrentDonations] = useState(0);
 
   const percentRaised = Math.min(
     (currentDonations / fundraisingGoal) * 100,
     100
   );
+
+useEffect(() => {
+  fetch(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSz03acHFQ9EtT55CKLas8fCDveVHnAJYpAvydUQLiKn6rmXZcZ13pWJDvoQmlGtWQ0m8TLkppJU-VJ/pub?output=csv"
+  )
+    .then((response) => response.text())
+    .then((csv) => {
+      const rows = csv.split("\n");
+      const firstRow = rows[0].split(",");
+
+      const donationAmount = Number(firstRow[1]);
+
+      if (!isNaN(donationAmount)) {
+        setCurrentDonations(donationAmount);
+      }
+    })
+    .catch((error) => {
+      console.error("Error loading donations:", error);
+    });
+}, []);
 
   return (
     <div className="site">
